@@ -15,6 +15,12 @@ angular.module('test')
             });
         }
 
+        $scope.search = function() {
+            test.search($scope.buscar.nombreSearch, function(list) {
+            	$scope.list = list.data;
+            });
+        }
+
         $scope.form = {};
 
         $scope.load();

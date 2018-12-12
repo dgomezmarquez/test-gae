@@ -9,5 +9,9 @@ angular.module('test')
             save: function (test, success) {
                 return $http.post("/rest/test", test).then(success);
             }
+            ,
+            search: function (test, success) {
+                return $http.get("/rest/test/search/" + test).then(success);
+            }
         };
     });

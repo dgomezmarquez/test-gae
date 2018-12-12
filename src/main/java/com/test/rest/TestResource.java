@@ -4,6 +4,9 @@ import com.test.dao.TestBeanDAO;
 import com.test.data.TestBean;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.jaxrs.PATCH;
+
+import java.util.List;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -54,5 +57,13 @@ public class TestResource {
         }
         this.testBeanDAO.delete(bean);
         return Response.ok().build();
+    }
+    
+    @GET
+    @Path("/search/{nombreSearch}")
+    @ApiOperation("search test object")
+    public Response get(@PathParam("nombreSearch") String nombre) {
+        List<TestBean> retval = this.testBeanDAO.sarchByName(nombre);
+        return Response.ok(retval).build();
     }
 }
