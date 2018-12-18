@@ -1,42 +1,44 @@
 <h3>List of tests</h3>
 
 <table>
-  <tr>
-    <th>Nombre</th>
-    <th>Autort</th>
-  </tr>
-  <tr ng-repeat="item in list">
-    <td><a href="/#/{{item.id}}">{{item.nombre}}</a></td>
-    <td>{{item.autor}}</td>
-  </tr>
+	<tr>
+		<th>Title</th>
+		<th>Author</th>
+	</tr>
+	<tr ng-repeat="item in list | orderBy:'autor'">
+		<td><a href="/#/{{item.id}}">{{item.nombre}}</a></td>
+		<td>{{item.autor}}</td>
+		<td><button ng-click="delete(item.id)">Delete</button></td>
+	</tr>
 </table>
+
+<div>
+	<div>
+		<!-- <label for="nombreSearch">Filter</label>  -->
+		<input id="nombreSearch" ng-model="buscar.nombreSearch" />
+	</div>
+	<button ng-click="search()">Filter</button>
+</div>
 
 <h3>New test</h3>
 <div>
-    <div>
-        <label for="id">id</label>
-        <input id="id" ng-model="form.id"/>
-    </div>
-    <div>
-        <label for="nombre">nombre</label>
-        <input id="nombre" ng-model="form.nombre"/>
-    </div>
-    <div>
-        <label for="autor">autor</label>
-        <input id="autor" ng-model="form.autor"/>
-    </div>
-    <div>
-        <label for="anyo_publicacion">año publicacion</label>
-        <input id="anyo_publicacion" ng-model="form.anyo_publicacion"/>
-    </div>
-    
-    <button ng-click="save()">Save</button>
-    
-    <br>
-    <div>
-        <label for="nombreSearch">Filtro</label>
-        <input id="nombreSearch" ng-model="buscar.nombreSearch"/>
-    </div>
-    <button ng-click="search()">Filtrar</button>
-    
+<!-- <div>
+ 		<label for="id">ID</label> <input id="id" ng-model="form.id" />
+ 	</div> -->
+	<div>
+		<label for="nombre">Name</label> <input id="nombre" ng-model="form.nombre" />
+	</div>
+	<div>
+		<label for="autor">Author</label> <input id="autor" ng-model="form.autor" />
+	</div>
+	<div>
+		<label for="anyo_publicacion">Year</label>
+		<input id="anyo_publicacion" ng-model="form.anyo_publicacion" />
+	</div>
+	<div>
+		<label for="autor">Gender</label> <input id="autor" ng-model="form.genero" />
+	</div>
+
+	<button ng-click="save()">Save</button>
+
 </div>

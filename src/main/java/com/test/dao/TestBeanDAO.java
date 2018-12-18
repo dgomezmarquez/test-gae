@@ -1,14 +1,11 @@
 package com.test.dao;
 
-import com.google.appengine.api.search.Index;
-import com.google.appengine.api.search.IndexSpec;
-import com.google.appengine.api.search.SearchServiceFactory;
-import com.googlecode.objectify.ObjectifyService;
-import com.test.data.TestBean;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+
+import com.googlecode.objectify.ObjectifyService;
+import com.test.data.TestBean;
 
 /**
  * @author Alejandro Aranda
@@ -63,7 +60,7 @@ public class TestBeanDAO {
 			throw new IllegalArgumentException("null test object");
 		}
 		LOGGER.info("Deleting bean " + bean.getId());
-		ObjectifyService.ofy().delete().entity(bean);
+		ObjectifyService.ofy().delete().entity(bean).now();
 	}
 
 	public List<TestBean> sarchByName(String nombre) {

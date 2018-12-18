@@ -20,6 +20,12 @@ angular.module('test')
             	$scope.list = list.data;
             });
         }
+        
+        $scope.delete = function(id) {
+        	test.delete(id, function() {
+                $scope.load();
+            });
+        }
 
         $scope.form = {};
 
